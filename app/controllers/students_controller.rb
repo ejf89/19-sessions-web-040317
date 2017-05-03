@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
 
   def index
-    session['user_id'] = 5
+    @current_user = User.find(session[:user_id])
     @students = Student.all
   end
 

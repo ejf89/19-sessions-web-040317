@@ -1,0 +1,7 @@
+<h1><%= @student.name %></h1>
+<p><%= @student.email %></p>
+
+<%= session['user_id'] %>
+
+<%= link_to "Back", students_path %>
+<%= link_to "Edit", edit_student_path(@student) %>

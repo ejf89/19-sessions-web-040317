@@ -1,7 +1,8 @@
 class StudentsController < ApplicationController
 
+  before_action :authorize_user, only: [:new, :edit, :update, :create]
+
   def index
-    @current_user = User.find(session[:user_id])
     @students = Student.all
   end
 
@@ -10,6 +11,7 @@ class StudentsController < ApplicationController
   end
 
   def new
+    # only allow logged in users to see this form
     @student = Student.new
   end
 
@@ -37,15 +39,4 @@ class StudentsController < ApplicationController
   def student_params(*args)
     params.require(:student).permit(*args)
   end
-
 end
-
-
-# class PublicKeysController < ApplicationController
-#
-#   def create
-#     params[:public_key] # {user_id: , key: }
-#     @public_key = PublicKey.create(params[:public_key])
-#   end
-#
-# end

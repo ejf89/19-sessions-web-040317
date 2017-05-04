@@ -1,5 +1,7 @@
 <h1>Log In</h1>
 
+<%= flash[:notice] %>
+
 <%= form_tag sessions_path do %>
   <%= text_field_tag :username %>
   <%= submit_tag "Submit" %>
